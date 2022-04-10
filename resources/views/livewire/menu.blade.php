@@ -5,24 +5,33 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Tambah Menu</h5>
-                    <button type="button" wire:click.prevent='resetInput()' class="btn btn-secondary" data-dismiss="modal">
+                    <button type="button" wire:click.prevent='resetInput()' class="btn btn-secondary"
+                        data-dismiss="modal">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form enctype="multipart/form-data" wire:submit.prevent="save">
                         <input type="hidden" wire:model.defer="productid">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Nama Makanan/Minuman</label>
-                            <input type="text" wire:model.defer="productname" class="form-control" placeholder="Masukan Nama">
+                            <input type="text" wire:model.defer="productname" class="form-control"
+                                placeholder="Masukan Nama">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Harga</label>
-                            <input type="number" wire:model.defer="price" class="form-control" placeholder="Masukan Harga">
+                            <input type="number" wire:model.defer="price" class="form-control"
+                                placeholder="Masukan Harga">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="customFile">Input image</label>
+                            <input wire:model.defer="image" type="file" class="form-control" id="customFile" />
                         </div>
                         <br>
-                        <button wire:click.prevent='resetInput()' type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button wire:click.prevent="simpanmenu" class="btn btn-dark" data-dismiss="modal">Create</button>
+                        <button wire:click.prevent='resetInput()' type="button" class="btn btn-secondary"
+                            data-dismiss="modal">Close</button>
+                        <button wire:click.prevent="simpanmenu" class="btn btn-dark"
+                            data-dismiss="modal">Create</button>
                     </form>
                 </div>
             </div>
@@ -34,7 +43,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
-                    <button type="button" wire:click.prevent='resetInput()' class="btn btn-secondary" data-dismiss="modal">
+                    <button type="button" wire:click.prevent='resetInput()' class="btn btn-secondary"
+                        data-dismiss="modal">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -43,15 +53,19 @@
                         <input type="hidden" wire:model.defer="productid">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Nama Makanan/Minuman</label>
-                            <input type="text" wire:model.defer="productname" class="form-control" placeholder="Masukan Nama">
+                            <input type="text" wire:model.defer="productname" class="form-control"
+                                placeholder="Masukan Nama">
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Harga</label>
-                            <input type="number" wire:model.defer="price" class="form-control" placeholder="Masukan Harga">
+                            <input type="number" wire:model.defer="price" class="form-control"
+                                placeholder="Masukan Harga">
                         </div>
                         <br>
-                        <button wire:click.prevent='resetInput()' type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button wire:click.prevent="simpanedit" class="btn btn-dark" data-dismiss="modal">Create</button>
+                        <button wire:click.prevent='resetInput()' type="button" class="btn btn-secondary"
+                            data-dismiss="modal">Close</button>
+                        <button wire:click.prevent="simpanedit" class="btn btn-dark"
+                            data-dismiss="modal">Create</button>
                     </form>
                 </div>
             </div>
@@ -87,8 +101,7 @@
             </div>
         </div>
         <div class=" col-md-4">
-            <input type="search" wire:model.debounce.500ms="search" class="form-control"
-                placeholder="Search">
+            <input type="search" wire:model.debounce.500ms="search" class="form-control" placeholder="Search">
         </div>
     </div>
 
@@ -129,7 +142,8 @@
                         <td>{{ $student->name }}</td>
                         <td>{{ $student->price }}</td>
                         <td>
-                            <button class="btn btn btn-dark btn-sm" wire:click.prevent="edit({{ $student->id }})" data-toggle="modal" data-target="#exampleModals">Edit</button>
+                            <button class="btn btn btn-dark btn-sm" wire:click.prevent="edit({{ $student->id }})"
+                                data-toggle="modal" data-target="#exampleModals">Edit</button>
                             <button class="btn btn-secondary btn-sm"
                                 onclick="confirm('Are you sure you want to delete this record?') || event.stopImmediatePropagation()"
                                 wire:click="destroy({{ $student->id }})"><i class="fa fa-trash"

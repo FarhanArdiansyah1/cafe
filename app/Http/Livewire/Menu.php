@@ -11,11 +11,13 @@ use Livewire\WithPagination;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Livewire\WithFileUploads;
 
 
 class Menu extends Component
 {
     use WithPagination;
+    use WithFileUploads;
     public $paginate = 10;
     public $search = "";
     public $checked = [];
@@ -25,6 +27,7 @@ class Menu extends Component
     public $price;
     public $productname;
     public $productid;
+    public $image;
 
 
     public function render()
@@ -93,7 +96,8 @@ class Menu extends Component
         ]);
         Product::create([
             'name' => $this->productname,
-            'price' => $this->price
+            'price' => $this->price,
+            'image' => $this->image->store('image')
         ]);
         $this->resetInput();
     }
